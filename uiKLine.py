@@ -9,10 +9,10 @@ import pandas as pd
 from functools import partial
 from collections import deque
 
-from qtpy.QtGui import *
-from qtpy.QtCore import *
-from qtpy.QtWidgets import *
-from qtpy import QtGui,QtCore
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+from PyQt5 import QtGui,QtCore
 from uiCrosshair import Crosshair
 import pyqtgraph as pg
 
@@ -819,12 +819,12 @@ if __name__ == '__main__':
     cfgfile = QtCore.QFile('css.qss')
     cfgfile.open(QtCore.QFile.ReadOnly)
     styleSheet = cfgfile.readAll()
-    styleSheet = unicode(styleSheet, encoding='utf8')
+    styleSheet = str(styleSheet)
     app.setStyleSheet(styleSheet)
     # K线界面
     ui = KLineWidget()
     ui.show()
     ui.KLtitle.setText('rb1701',size='20pt')
-    ui.loadData(pd.DataFrame.from_csv('data.csv'))
+    ui.loadData(pd.read_csv('data.csv'))
     ui.refreshAll()
     app.exec_()

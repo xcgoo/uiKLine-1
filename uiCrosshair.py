@@ -1,13 +1,11 @@
 # encoding: UTF-8
 import sys,os
-import qtpy
 import pyqtgraph as pg
 import datetime as dt          
 import numpy as np
 import traceback
 
-#from pyqtgraph.Qt import QtGui, QtCore
-from qtpy import QtGui, QtCore
+from PyQt5 import QtGui, QtCore
 from pyqtgraph.Point import Point
 
 ########################################################################
