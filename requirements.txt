@@ -2,3 +2,5 @@ numpy
 pandas
 pyqt5
 pyqtgraph
+tqdm
+ta-lib

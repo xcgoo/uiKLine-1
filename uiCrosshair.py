@@ -104,7 +104,8 @@ class Crosshair(QtCore.QObject):
         self.yAxis = yAxis
         self.vhLinesSetXY(xAxis,yAxis)
         self.plotInfo(xAxis,yAxis)
-        self.master.volume.update()
+        if hasattr(self.master, 'volume'):
+            self.master.volume.update()
 
     #----------------------------------------------------------------------
     def vhLinesSetXY(self,xAxis,yAxis):
