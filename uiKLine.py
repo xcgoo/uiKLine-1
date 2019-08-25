@@ -391,12 +391,11 @@ class CandlestickItem(pg.GraphicsObject):
 ########################################################################
 class KLineWidget(KeyWraper):
     """用于显示价格走势图"""
-
     # 是否完成了历史数据的读取
     initCompleted = False
     clsId = 0
     #----------------------------------------------------------------------
-    def __init__(self, parent=None,display_vol=False, display_sub=False, **kargs):
+    def __init__(self, parent=None, display_vol=False, display_sub=False, **kargs):
         """Constructor"""
         self.parent = parent
         super(KLineWidget, self).__init__(parent)
