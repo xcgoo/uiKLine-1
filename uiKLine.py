@@ -287,15 +287,15 @@ class CandlestickItem(pg.GraphicsObject):
         self.setFlag(self.ItemUsesExtendedStyleOption)
         # 画笔和画刷
         w = 0.4
-        self.offset   = 0
-        self.low      = 0
-        self.high     = 1
-        self.picture  = QtGui.QPicture()
+        self.offset = 0
+        self.low = 0
+        self.high = 1
+        self.picture = QtGui.QPicture()
         self.pictures = []
-        self.bPen     = pg.mkPen(color=(0, 240, 240, 255), width=w*2)       # 阴线画笔
-        self.bBrush   = pg.mkBrush((0, 240, 240, 255))                      # 阴线主体
-        self.rPen     = pg.mkPen(color=(255, 60, 60, 255), width=w*2)       # 阳线画笔
-        self.rBrush   = pg.mkBrush((255, 60, 60, 255))                      # 阳线主体
+        self.bPen = pg.mkPen(color=(0, 240, 240, 255), width=w*2)       # 阴线画笔
+        self.bBrush = pg.mkBrush((0, 240, 240, 255))                      # 阴线主体
+        self.rPen = pg.mkPen(color=(255, 60, 60, 255), width=w*2)       # 阳线画笔
+        self.rBrush = pg.mkBrush((255, 60, 60, 255))                      # 阳线主体
         self.rBrush.setStyle(QtCore.Qt.NoBrush)
         # 刷新K线
         self.generatePicture(self.data)
@@ -314,7 +314,7 @@ class CandlestickItem(pg.GraphicsObject):
         bBrush = self.bBrush
         rPen   = self.rPen
         rBrush = self.rBrush
-        low,high = (data[0]['low'],data[0]['high']) if len(data)>0 else (0,1)
+        low,high = (data[0]['low'], data[0]['high']) if len(data)>0 else (0,1)
         for (t, open0, close0, low0, high0) in data:
             # t 并不是时间，是序列
             if t >= len(self.pictures):
@@ -344,7 +344,7 @@ class CandlestickItem(pg.GraphicsObject):
                 self.pictures.append(picture)
 
         # 更新所有K线的最高/最低
-        self.low,self.high = low,high
+        self.low, self.high = low, high
 
     # 手动重画
     #----------------------------------------------------------------------
@@ -401,8 +401,8 @@ class KLineWidget(KeyWraper):
         super(KLineWidget, self).__init__(parent)
 
         # 当前序号
-        self.index    = None    # 下标
-        self.countK   = 60      # 显示的Ｋ线数量范围
+        self.index = None    # 下标
+        self.countK = 60      # 显示的Ｋ线数量范围
 
         KLineWidget.clsId += 1
         self.windowId = str(KLineWidget.clsId)
@@ -410,14 +410,14 @@ class KLineWidget(KeyWraper):
         self.title = u'KLineWidget'
 
         # # 保存K线数据的列表和Numpy Array对象
-        self.datas    = []                  # 'datetime','open','close','low','high','volume','openInterest
-        self.listBar  = []                  # 蜡烛图使用的Bar list :'time_int','open','close','low','high'
-        self.listVol  = []                  # 成交量（副图使用）的 volume list
+        self.datas = []                  # 'datetime','open','close','low','high','volume','openInterest
+        self.listBar = []                  # 蜡烛图使用的Bar list :'time_int','open','close','low','high'
+        self.listVol = []                  # 成交量（副图使用）的 volume list
 
         # 交易事务有关的线段
-        self.list_trans  = []         # 交易事务( {'start_time','end_time','tns_type','start_price','end_price','start_x','end_x','completed'}
-        self.list_trans_pos = {'win':[],'loss':[]}
-        self.list_trans_adj = {'win':[],'loss':[]}
+        self.list_trans = []         # 交易事务( {'start_time','end_time','tns_type','start_price','end_price','start_x','end_x','completed'}
+        self.list_trans_pos = {'win':[], 'loss':[]}
+        self.list_trans_adj = {'win':[], 'loss':[]}
         self.trans_lines = {}
 
         # 交易记录相关的箭头
@@ -432,7 +432,7 @@ class KLineWidget(KeyWraper):
 
         # 所有K线上指标
         self.main_color_pool = deque(['red', 'green', 'yellow', 'white'])
-        self.main_indicator_data  = {}      # 主图指标数据（字典，key是指标，value是list）
+        self.main_indicator_data = {}      # 主图指标数据（字典，key是指标，value是list）
         self.main_indicator_colors = {}     # 主图指标颜色（字典，key是指标，value是list
         self.main_indicator_plots = {}      # 主图指标的所有画布（字典，key是指标，value是plot)
 
@@ -502,7 +502,7 @@ class KLineWidget(KeyWraper):
     def create_plot_item(self, name):
         """生成PlotItem对象"""
         vb = CustomViewBox()
-        plotItem = pg.PlotItem(viewBox = vb, name=name ,axisItems={'bottom': self.axisTime})
+        plotItem = pg.PlotItem(viewBox = vb, name=name, axisItems={'bottom': self.axisTime})
         plotItem.setMenuEnabled(False)
         plotItem.setClipToView(True)
         plotItem.hideAxis('left')
